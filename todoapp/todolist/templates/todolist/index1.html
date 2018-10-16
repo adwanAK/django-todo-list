@@ -1,0 +1,10 @@
+<h1>Todo Lists:</h1>
+{% if object_list %}
+<ul>
+{%for todoList in object_list %}
+ <li><a href="{% url 'todolist:ListDetailView' todoList.id %}"> {{todoList.title }} </a></li>
+<hr>
+<br>
+{%endfor%}
+</ul>
+{%endif%}

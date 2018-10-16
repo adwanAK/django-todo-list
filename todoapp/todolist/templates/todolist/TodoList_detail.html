@@ -1,0 +1,15 @@
+{% if todolist  %}
+    <h1>{{todolist.title}} </h1><br>
+    Completed: {{todolist.completed}}
+    <hr>
+
+
+    <form action="{% url 'todolist:submitForm' todolist.id %}" method="POST">
+        {% csrf_token %}
+        {% for item in todolist.todoitem_set.all %}
+        <input type="checkbox" name="checks" value="{{ item.id }}">{{ item.name }}
+        <br>
+        {% endfor %}
+        <input type="submit" value="Submit!">
+    </form>
+{% endif %}
